@@ -13,7 +13,7 @@ set -euo pipefail
 # 路径与常量
 # ---------------------------------------------------------------------------
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CONFIG_SRC_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"   # 上一级目录 == ~/.config
+CONFIG_SRC_DIR="${SCRIPT_DIR}"                     # 仓库内自带配置
 CONFIG_DIR="${HOME}/.config"
 
 RED='\033[0;31m'
@@ -226,11 +226,9 @@ main() {
     create_symlink "${CONFIG_SRC_DIR}/fish"         "${CONFIG_DIR}/fish"
     create_symlink "${CONFIG_SRC_DIR}/yazi"         "${CONFIG_DIR}/yazi"
     create_symlink "${CONFIG_SRC_DIR}/starship.toml" "${CONFIG_DIR}/starship.toml"
-    # nvim 配置位于 mars.nvim/nvim
-    create_symlink "${CONFIG_SRC_DIR}/mars.nvim/nvim" "${CONFIG_DIR}/nvim"
-    # tmux 来自 mars.nvim/tmux/tmux.conf
+    create_symlink "${CONFIG_SRC_DIR}/nvim"         "${CONFIG_DIR}/nvim"
     mkdir -p "${CONFIG_DIR}/tmux"
-    create_symlink "${CONFIG_SRC_DIR}/mars.nvim/tmux/tmux.conf" "${CONFIG_DIR}/tmux/tmux.conf"
+    create_symlink "${CONFIG_SRC_DIR}/tmux/tmux.conf" "${CONFIG_DIR}/tmux/tmux.conf"
 
     install_fisher_plugins
 

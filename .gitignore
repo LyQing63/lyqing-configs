@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# fish 本地状态（含 UUID、颜色等个人偏好）
+fish/fish_variables
+
+# yazi 本地书签
+yazi/bookmark
+
+# 可能的本地备份
+*.backup.*
+
+# 编辑器临时文件
+*.swp
+*~
